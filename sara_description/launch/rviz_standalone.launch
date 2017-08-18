@@ -1,0 +1,11 @@
+<launch>
+	<param name="robot_description" command="$(find xacro)/xacro.py '$(find sara_description)/urdf/sara.xacro'"/>
+	
+	<node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
+	respawn="false" output="screen">
+		<remap from="/joint_states" to="/sara/joint_states" />
+	</node>
+	
+	<!-- Show in Rviz   -->
+	<node name="rviz" pkg="rviz" type="rviz" ns="/sara"/>
+</launch>
